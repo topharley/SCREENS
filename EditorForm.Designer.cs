@@ -343,7 +343,7 @@ namespace Screens
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 320);
-            this.Controls.Add(this.Box);
+            this.CenterPanel.Controls.Add(this.Box);
             this.Controls.Add(this.CenterPanel);
             this.Controls.Add(this.MainToolStrip);
             this.Controls.Add(this.BottomPanel);
