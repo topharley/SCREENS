@@ -156,7 +156,7 @@
             this.groupBox2.Size = new System.Drawing.Size(379, 205);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Switches";
+            this.groupBox2.Text = "Настройки";
             // 
             // UseHKCheckBox
             // 

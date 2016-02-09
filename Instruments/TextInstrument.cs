@@ -25,7 +25,7 @@ namespace Screens.Instruments
             base.Init(picture, color);
             if (_text == null)
             {
-                if (!InputQuery.Input("Text", "Input text", ref _text))
+                if (!InputQuery.Input("Текст", "Введите текст", ref _text))
                     _text = "";
                 _mouseDown = true;
             }

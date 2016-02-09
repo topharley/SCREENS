@@ -58,7 +58,6 @@ namespace Screens
             this.BottomPanel.SuspendLayout();
             this.MainToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CenterPanel)).BeginInit();
-            this.CenterPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Box)).BeginInit();
             this.SuspendLayout();
             // 
@@ -317,7 +316,6 @@ namespace Screens
             // CenterPanel
             // 
             this.CenterPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CenterPanel.BackgroundImage")));
-            this.CenterPanel.Controls.Add(this.Box);
             this.CenterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CenterPanel.Location = new System.Drawing.Point(0, 25);
             this.CenterPanel.Name = "CenterPanel";
@@ -330,7 +328,7 @@ namespace Screens
             this.Box.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Box.BackColor = System.Drawing.Color.White;
             this.Box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box.Location = new System.Drawing.Point(12, 28);
+            this.Box.Location = new System.Drawing.Point(104, 88);
             this.Box.Name = "Box";
             this.Box.Size = new System.Drawing.Size(333, 98);
             this.Box.TabIndex = 5;
@@ -345,6 +343,7 @@ namespace Screens
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(564, 320);
+            this.Controls.Add(this.Box);
             this.Controls.Add(this.CenterPanel);
             this.Controls.Add(this.MainToolStrip);
             this.Controls.Add(this.BottomPanel);
@@ -358,7 +357,6 @@ namespace Screens
             this.MainToolStrip.ResumeLayout(false);
             this.MainToolStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CenterPanel)).EndInit();
-            this.CenterPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Box)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
