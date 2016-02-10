@@ -72,7 +72,11 @@ namespace Screens
         {
             if (e.KeyCode == Keys.Escape) Clipper.Terminate();
             if (e.KeyCode == Keys.Z && e.Modifiers == Keys.Control && UndoToolStripButton.Enabled)
-                UndoToolStripButton_Click(null, null);
+                UndoToolStripButton.PerformClick();
+            if (e.KeyCode == Keys.C && e.Modifiers == Keys.Control)
+                ClipboardBbutton.PerformClick();
+            if (e.KeyCode == Keys.S && e.Modifiers == Keys.Control)
+                SaveButton.PerformClick();
         }
 
         private void ColoredButtonToolStripButton_Click(object sender, System.EventArgs e)
