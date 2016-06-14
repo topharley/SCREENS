@@ -121,7 +121,8 @@ namespace Screens
 
         private void ClipboardBbutton_Click(object sender, System.EventArgs e)
         {
-            Clipboard.SetImage(Box.Image);
+            var bitmap = TextInstrument.DrawWaterMark(Box.Image);
+            Clipboard.SetImage(bitmap);
             Close();
         }
 

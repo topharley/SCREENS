@@ -43,5 +43,27 @@ namespace Screens.Instruments
                 return image;
             }
         }
+
+        public static Image DrawWaterMark(Image image)
+        {
+            const string text = "http://scrns.ru";
+
+            Font textFont = new Font(FontFamily.GenericSansSerif, 14f);
+            Brush textBrush = new SolidBrush(Color.Black);
+
+            using (Graphics graphics = Graphics.FromImage(image))
+            {
+                var size = graphics.MeasureString(text, textFont).ToSize();
+                if (image.Width > size.Width * 2 && image.Height > size.Height * 2)
+                {
+                    var startPos = new Point(image.Width - size.Width, image.Height - size.Height);
+                    graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
+                    var rect = new Rectangle(startPos, size);
+                    graphics.FillRectangle(new SolidBrush(Color.FromArgb(200, 255, 255, 255)) , rect);
+                    graphics.DrawString(text, textFont, textBrush, startPos);
+                }
+                return image;
+            }
+        }
     }
 }

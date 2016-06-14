@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Windows.Forms;
+using Screens.Instruments;
 using Screens.Uploaders;
 
 namespace Screens
@@ -22,9 +24,11 @@ namespace Screens
         {
             SaveLastScreenshot(bitmap);
 
-            var editorForm = EditScreenshot(bitmap);
+            bitmap = EditScreenshot(bitmap);
 
-            string url = UploadScreenshot(editorForm.Bitmap);
+            bitmap = (Bitmap)TextInstrument.DrawWaterMark(bitmap);
+
+            string url = UploadScreenshot(bitmap);
 
             if (Settings.Current.ShortenUrl) url = ShortenUrl(url);
 
@@ -89,11 +93,11 @@ namespace Screens
             }
         }
 
-        private static EditorForm EditScreenshot(Bitmap bitmap)
+        private static Bitmap EditScreenshot(Bitmap bitmap)
         {
             EditorForm editorForm = new EditorForm(bitmap);
             if (editorForm.ShowDialog() != DialogResult.OK) Clipper.Terminate();
-            return editorForm;
+            return editorForm.Bitmap;
         }
 
         private static void SaveLastScreenshot(Bitmap bitmap)
@@ -110,7 +114,6 @@ namespace Screens
                 }
             }
         }
-
 
         private static void LogScreenshotUrl(string url)
         {

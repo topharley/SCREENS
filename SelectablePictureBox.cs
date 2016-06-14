@@ -25,15 +25,5 @@ namespace Screens
             this.Invalidate();
             base.OnLeave(e);
         }
-        //protected override void OnPaint(PaintEventArgs pe)
-        //{
-        //    base.OnPaint(pe);
-        //    if (this.Focused)
-        //    {
-        //        var rc = this.ClientRectangle;
-        //        rc.Inflate(-2, -2);
-        //        ControlPaint.DrawFocusRectangle(pe.Graphics, rc);
-        //    }
-        //}
     }
 }
