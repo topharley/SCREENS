@@ -173,9 +173,9 @@
             this.AutoStartCheckBox.AutoSize = true;
             this.AutoStartCheckBox.Location = new System.Drawing.Point(20, 29);
             this.AutoStartCheckBox.Name = "AutoStartCheckBox";
-            this.AutoStartCheckBox.Size = new System.Drawing.Size(186, 17);
+            this.AutoStartCheckBox.Size = new System.Drawing.Size(180, 17);
             this.AutoStartCheckBox.TabIndex = 14;
-            this.AutoStartCheckBox.Text = "Запускать всместе с системой";
+            this.AutoStartCheckBox.Text = "Запускать вместе с системой";
             this.AutoStartCheckBox.UseVisualStyleBackColor = true;
             // 
             // SaveLocalPathLinkLabel
