@@ -44,7 +44,7 @@ namespace Screens
             {
                 var screenForm = new Form
                 {
-                    Bounds = screen.WorkingArea,
+                    Bounds = screen.Bounds,
                     StartPosition = FormStartPosition.Manual,
                     WindowState = FormWindowState.Maximized,
                     FormBorderStyle = FormBorderStyle.None,
@@ -106,10 +106,10 @@ namespace Screens
                     _selectingArea = false;
                     clipForm.Close();
 
-                    //forms.ForEach(f => f.Visible = false); // uncomment for debug
+                    forms.ForEach(f => f.Visible = false); // uncomment for debug
 
                     Bitmap bitmap;
-                    if (screen.WorkingArea.Contains(clipForm.Bounds))
+                    if (screen.Bounds.Contains(clipForm.Bounds))
                         bitmap = GetClip(screenImage.Image, new Rectangle(screenForm.PointToClient(clipForm.Location), clipForm.Size));
                     else bitmap = Collage(forms, clipForm.Location, clipForm.Size);
 
@@ -136,8 +136,8 @@ namespace Screens
                 do
                 {
                     Screen screen = Screen.FromPoint(lcPoint);
-                    int rcX = lcPoint.X + size.Width > screen.WorkingArea.Right ? screen.WorkingArea.Right : lcPoint.X + size.Width;
-                    int rcY = lcPoint.Y + size.Height > screen.WorkingArea.Bottom ? screen.WorkingArea.Bottom : lcPoint.Y + size.Height;
+                    int rcX = lcPoint.X + size.Width > screen.Bounds.Right ? screen.Bounds.Right : lcPoint.X + size.Width;
+                    int rcY = lcPoint.Y + size.Height > screen.Bounds.Bottom ? screen.Bounds.Bottom : lcPoint.Y + size.Height;
 
                     Size partSize = new Size(rcX - lcPoint.X, rcY - lcPoint.Y);
 
@@ -145,13 +145,13 @@ namespace Screens
                     var image = (imageForm.Controls[0] as PictureBox).Image; // TODO
                     graphics.DrawImage(image, new Rectangle(dstPoint, partSize), new Rectangle(imageForm.PointToClient(lcPoint), partSize), GraphicsUnit.Pixel);
 
-                    if (lcPoint.X + size.Width > screen.WorkingArea.Right) // двигаемся слева направо
+                    if (lcPoint.X + size.Width > screen.Bounds.Right) // двигаемся слева направо
                     {
                         lcPoint = new Point(rcX, lcPoint.Y);
                         size = new Size(size.Width - partSize.Width, size.Height); // и сверху вниз
                         dstPoint.Offset(partSize.Width, 0);
                     }
-                    else if (lcPoint.Y + size.Height > screen.WorkingArea.Bottom)
+                    else if (lcPoint.Y + size.Height > screen.Bounds.Bottom)
                     {
                         lcPoint = new Point(leftCorner.X, rcY);
                         size = new Size(fullSize.Width, fullSize.Height - partSize.Height);
@@ -183,11 +183,10 @@ namespace Screens
         private static Bitmap GetScreenshot(Screen screen)
         {
             var rect = screen.Bounds;
-            var wa = screen.WorkingArea;
             var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppRgb);
             using (Graphics graphics = Graphics.FromImage(bitmap))
             {
-                graphics.CopyFromScreen(wa.Left, wa.Top, 0, 0, bitmap.Size);
+                graphics.CopyFromScreen(rect.Left, rect.Top, 0, 0, bitmap.Size);
                 //graphics.CopyFromScreen(Point.Empty, Point.Empty, bitmap.Size);
             }
             return bitmap;
