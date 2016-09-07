@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq;
 using System.IO;
 using System.Text;
 using System.Threading;
@@ -16,28 +18,6 @@ namespace Screens
         public static void Clip(Processor processor)
         {
             Control.CheckForIllegalCrossThreadCalls = false;
-            var screenForm = new Form
-            {
-                WindowState = FormWindowState.Maximized,
-                FormBorderStyle = FormBorderStyle.None,
-                Opacity = 0.01,
-                Cursor = Cursors.Cross,
-                ShowInTaskbar = false,
-                TopMost = true
-            };
-            PictureBox screenImage;
-            screenForm.Controls.Add(screenImage = new PictureBox
-            {
-                Dock = DockStyle.Fill,
-                Image = GetScreenshot()
-            });
-            screenForm.Show();
-            screenForm.Focus();
-            new Thread(() =>
-            {
-                Thread.Sleep(50);
-                screenForm.Opacity = 1.0;
-            }).Start();
 
             var clipForm = new Form
             {
@@ -59,51 +39,129 @@ namespace Screens
                 ForeColor = Color.White
             });
 
-            screenImage.MouseDown += (s, e) =>
+            List<Form> forms = new List<Form>();
+            foreach (Screen screen in Screen.AllScreens)
             {
-                var cursorColor = GetColor(screenImage, e.Location);
-                clipForm.BackColor = cursorColor.ToArgb() > Color.Black.ToArgb() / 2 ? Color.Black : Color.White;
-                sizeLabel.ForeColor = cursorColor.ToArgb() > Color.Black.ToArgb() / 2 ? Color.White : Color.Black;
-            };
-
-            screenImage.MouseDown += (s, e) =>
-            {
-                if (e.Button == MouseButtons.Left)
+                var screenForm = new Form
                 {
-                    _selectingArea = true;
-                    _startPoint = screenImage.PointToScreen(e.Location);
-                    clipForm.Location = _startPoint;
-                    clipForm.Size = new Size(1, 1);
-                    clipForm.Show();
-                }
-            };
-
-            screenImage.MouseMove += (s, e) =>
-            {
-                if (_selectingArea)
+                    Bounds = screen.WorkingArea,
+                    StartPosition = FormStartPosition.Manual,
+                    WindowState = FormWindowState.Maximized,
+                    FormBorderStyle = FormBorderStyle.None,
+                    Opacity = 0.01,
+                    Cursor = Cursors.Cross,
+                    ShowInTaskbar = false,
+                    TopMost = true
+                };
+                PictureBox screenImage;
+                screenForm.Controls.Add(screenImage = new PictureBox
                 {
-                    var newPoint = screenImage.PointToScreen(e.Location);
-                    var point = new Point(Math.Min(newPoint.X, _startPoint.X), Math.Min(newPoint.Y, _startPoint.Y));
-                    var size = new Size(Math.Max(newPoint.X, _startPoint.X) - point.X, Math.Max(newPoint.Y, _startPoint.Y) - point.Y);
-                    if (clipForm.Location != point) clipForm.Location = point;
-                    clipForm.Size = size;
-                    sizeLabel.Text = size.Width + " x " + size.Height;
-                }
-            };
+                    Dock = DockStyle.Fill,
+                    Image = GetScreenshot(screen),
+                });
+                screenForm.Show();
+                screenForm.Focus();
+                forms.Add(screenForm);
 
-            screenImage.MouseUp += (s, e) =>
+                new Thread(() =>
+                {
+                    Thread.Sleep(50);
+                    screenForm.Opacity = 1.0;
+                }).Start();
+
+                screenImage.MouseDown += (s, e) =>
+                {
+                    var cursorColor = GetColor(screenImage, e.Location);
+                    clipForm.BackColor = cursorColor.ToArgb() > Color.Black.ToArgb() / 2 ? Color.Black : Color.White;
+                    sizeLabel.ForeColor = cursorColor.ToArgb() > Color.Black.ToArgb() / 2 ? Color.White : Color.Black;
+                };
+
+                screenImage.MouseDown += (s, e) =>
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        _selectingArea = true;
+                        _startPoint = screenImage.PointToScreen(e.Location);
+                        clipForm.Location = _startPoint;
+                        clipForm.Size = new Size(1, 1);
+                        clipForm.Show();
+                    }
+                };
+
+                screenImage.MouseMove += (s, e) =>
+                {
+                    if (_selectingArea)
+                    {
+                        var newPoint = screenImage.PointToScreen(e.Location);
+                        var point = new Point(Math.Min(newPoint.X, _startPoint.X), Math.Min(newPoint.Y, _startPoint.Y));
+                        var size = new Size(Math.Max(newPoint.X, _startPoint.X) - point.X, Math.Max(newPoint.Y, _startPoint.Y) - point.Y);
+                        if (clipForm.Location != point) clipForm.Location = point;
+                        clipForm.Size = size;
+                        sizeLabel.Text = size.Width + " x " + size.Height;
+                    }
+                };
+
+                screenImage.MouseUp += (s, e) =>
+                {
+                    _selectingArea = false;
+                    clipForm.Close();
+
+                    //forms.ForEach(f => f.Visible = false); // uncomment for debug
+
+                    Bitmap bitmap;
+                    if (screen.WorkingArea.Contains(clipForm.Bounds))
+                        bitmap = GetClip(screenImage.Image, new Rectangle(screenForm.PointToClient(clipForm.Location), clipForm.Size));
+                    else bitmap = Collage(forms, clipForm.Location, clipForm.Size);
+
+                    forms.ForEach(f => f.Close());
+
+                    if (bitmap.Size.Width < 15 || bitmap.Size.Height < 15) Terminate(); //too small to see
+                    processor.Process(bitmap);
+                };
+
+                clipForm.KeyDown += (s, e) => Escape(e);
+                screenForm.KeyDown += (s, e) => Escape(e);
+                screenImage.KeyDown += (s, e) => Escape(e);
+            }
+        }
+
+        private static Bitmap Collage(List<Form> forms, Point leftCorner, Size fullSize)
+        {
+            var bitmap = new Bitmap(fullSize.Width, fullSize.Height, PixelFormat.Format32bppRgb);
+            using (Graphics graphics = Graphics.FromImage(bitmap))
             {
-                _selectingArea = false;
-                clipForm.Close();
-                screenForm.Close();
-                var bitmap = GetClip(screenImage.Image, new Rectangle(clipForm.Location, clipForm.Size));
-                if (bitmap.Size.Width < 15 || bitmap.Size.Height < 15) Terminate(); //too small to see
-                processor.Process(bitmap);
-            };
+                Point dstPoint = Point.Empty;
+                Point lcPoint = leftCorner;
+                Size size = fullSize;
+                do
+                {
+                    Screen screen = Screen.FromPoint(lcPoint);
+                    int rcX = lcPoint.X + size.Width > screen.WorkingArea.Right ? screen.WorkingArea.Right : lcPoint.X + size.Width;
+                    int rcY = lcPoint.Y + size.Height > screen.WorkingArea.Bottom ? screen.WorkingArea.Bottom : lcPoint.Y + size.Height;
 
-            clipForm.KeyDown += (s, e) => Escape(e);
-            screenForm.KeyDown += (s, e) => Escape(e);
-            screenImage.KeyDown += (s, e) => Escape(e);
+                    Size partSize = new Size(rcX - lcPoint.X, rcY - lcPoint.Y);
+
+                    Form imageForm = forms.First(f => Screen.FromControl(f).DeviceName == screen.DeviceName); // TODO
+                    var image = (imageForm.Controls[0] as PictureBox).Image; // TODO
+                    graphics.DrawImage(image, new Rectangle(dstPoint, partSize), new Rectangle(imageForm.PointToClient(lcPoint), partSize), GraphicsUnit.Pixel);
+
+                    if (lcPoint.X + size.Width > screen.WorkingArea.Right) // двигаемся слева направо
+                    {
+                        lcPoint = new Point(rcX, lcPoint.Y);
+                        size = new Size(size.Width - partSize.Width, size.Height); // и сверху вниз
+                        dstPoint.Offset(partSize.Width, 0);
+                    }
+                    else if (lcPoint.Y + size.Height > screen.WorkingArea.Bottom)
+                    {
+                        lcPoint = new Point(leftCorner.X, rcY);
+                        size = new Size(fullSize.Width, fullSize.Height - partSize.Height);
+                        dstPoint.Offset(0, partSize.Height);
+                    }
+                    else dstPoint.Offset(partSize.Width, partSize.Height);
+                }
+                while (!(dstPoint.X == fullSize.Width && dstPoint.Y == fullSize.Height));
+            }
+            return bitmap;
         }
 
         private static void Escape(KeyEventArgs e)
@@ -122,13 +180,15 @@ namespace Screens
             }
         }
 
-        private static Bitmap GetScreenshot()
+        private static Bitmap GetScreenshot(Screen screen)
         {
-            var rect = Screen.GetBounds(Point.Empty);
+            var rect = screen.Bounds;
+            var wa = screen.WorkingArea;
             var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppRgb);
             using (Graphics graphics = Graphics.FromImage(bitmap))
             {
-                graphics.CopyFromScreen(Point.Empty, Point.Empty, bitmap.Size);
+                graphics.CopyFromScreen(wa.Left, wa.Top, 0, 0, bitmap.Size);
+                //graphics.CopyFromScreen(Point.Empty, Point.Empty, bitmap.Size);
             }
             return bitmap;
         }
