@@ -121,7 +121,9 @@ namespace Screens
 
         private void ClipboardBbutton_Click(object sender, System.EventArgs e)
         {
-            var bitmap = TextInstrument.DrawWaterMark(Box.Image);
+            var bitmap = Box.Image;
+            if (Settings.Current.DrawWaterMark)
+                bitmap = TextInstrument.DrawWaterMark(bitmap);
             Clipboard.SetImage(bitmap);
             Close();
         }
@@ -131,7 +133,10 @@ namespace Screens
             SaveFileDialog dlg = new SaveFileDialog { Filter = "PNG|*.png" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                var pngBuffer = Clipper.GetPng(Bitmap);
+                var bitmap = Box.Image;
+                if (Settings.Current.DrawWaterMark)
+                    bitmap = TextInstrument.DrawWaterMark(bitmap);
+                var pngBuffer = Clipper.GetPng((Bitmap)bitmap);
                 System.IO.File.WriteAllBytes(dlg.FileName, pngBuffer);
                 Clipboard.SetText(dlg.FileName);
                 Close();

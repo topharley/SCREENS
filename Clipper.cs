@@ -39,8 +39,10 @@ namespace Screens
                 ForeColor = Color.White
             });
 
+            var screens = Screen.AllScreens.ToDictionary(s => s, s => GetScreenshot(s));
+
             List<Form> forms = new List<Form>();
-            foreach (Screen screen in Screen.AllScreens)
+            foreach (Screen screen in screens.Keys)
             {
                 var screenForm = new Form
                 {
@@ -57,7 +59,7 @@ namespace Screens
                 screenForm.Controls.Add(screenImage = new PictureBox
                 {
                     Dock = DockStyle.Fill,
-                    Image = GetScreenshot(screen),
+                    Image = screens[screen]
                 });
                 screenForm.Show();
                 screenForm.Focus();
@@ -143,7 +145,12 @@ namespace Screens
 
                     Form imageForm = forms.First(f => Screen.FromControl(f).DeviceName == screen.DeviceName); // TODO
                     var image = (imageForm.Controls[0] as PictureBox).Image; // TODO
-                    graphics.DrawImage(image, new Rectangle(dstPoint, partSize), new Rectangle(imageForm.PointToClient(lcPoint), partSize), GraphicsUnit.Pixel);
+
+                    Rectangle srcBounds = new Rectangle(imageForm.PointToClient(lcPoint), partSize);
+                    graphics.DrawImage(image, new Rectangle(dstPoint, partSize), srcBounds, GraphicsUnit.Pixel);
+
+                    //if (!screen.Bounds.Contains(lcPoint)) // нет экрана
+                    //{ dstPoint.Offset(partSize.Width, partSize.Height); continue; }
 
                     if (lcPoint.X + size.Width > screen.Bounds.Right) // двигаемся слева направо
                     {
@@ -155,11 +162,11 @@ namespace Screens
                     {
                         lcPoint = new Point(leftCorner.X, rcY);
                         size = new Size(fullSize.Width, fullSize.Height - partSize.Height);
-                        dstPoint.Offset(0, partSize.Height);
+                        dstPoint.Offset(-dstPoint.X, partSize.Height);
                     }
                     else dstPoint.Offset(partSize.Width, partSize.Height);
                 }
-                while (!(dstPoint.X == fullSize.Width && dstPoint.Y == fullSize.Height));
+                while (!(dstPoint.X >= fullSize.Width && dstPoint.Y >= fullSize.Height));
             }
             return bitmap;
         }

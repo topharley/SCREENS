@@ -22,6 +22,8 @@ namespace Screens
         public String SaveLogFile { get; set; }
         public Boolean SaveLastScreenshot { get; set; }
         public String SaveLastScreenshotFile { get; set; }
+        public string WaterMark { get; set; }
+        public bool DrawWaterMark { get { return !String.IsNullOrWhiteSpace(WaterMark); } }
 
         private static readonly string _settingsFile = Path.Combine(Application.StartupPath, "settings.xml");
         private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(Settings));

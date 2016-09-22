@@ -26,7 +26,8 @@ namespace Screens
 
             bitmap = EditScreenshot(bitmap);
 
-            bitmap = (Bitmap)TextInstrument.DrawWaterMark(bitmap);
+            if (Settings.Current.DrawWaterMark)
+                bitmap = (Bitmap)TextInstrument.DrawWaterMark(bitmap);
 
             string url = UploadScreenshot(bitmap);
 
