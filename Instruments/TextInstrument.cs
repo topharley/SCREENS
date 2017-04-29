@@ -46,7 +46,6 @@ namespace Screens.Instruments
 
         public static Image DrawWaterMark(Image image)
         {
-            //const string text = "http://scrns.ru";
             var text = Settings.Current.WaterMark;
 
             Font textFont = new Font(FontFamily.GenericSansSerif, 14f);

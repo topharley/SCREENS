@@ -52,6 +52,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Clipper.cs" />
+    <Compile Include="Controls\WidthToolStripMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EditorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +68,7 @@
     <Compile Include="InputQuery.designer.cs">
       <DependentUpon>InputQuery.cs</DependentUpon>
     </Compile>
+    <Compile Include="Instruments\EraserInstrument.cs" />
     <Compile Include="Instruments\TextInstrument.cs" />
     <Compile Include="Instruments\InstrumentFactory.cs" />
     <Compile Include="Instruments\ArrowInstrument.cs" />
@@ -86,6 +90,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Cursors.cs" />
     <Compile Include="SelectablePictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -111,6 +116,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EditorForm.resx">
       <DependentUpon>EditorForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="InputQuery.resx">
       <DependentUpon>InputQuery.cs</DependentUpon>
@@ -118,6 +124,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="SettingsDialog.resx">
       <DependentUpon>SettingsDialog.cs</DependentUpon>
@@ -127,6 +134,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Cursors\EraserToolCursor.cur" />
+    <EmbeddedResource Include="Resources\Cursors\PencilToolCursor.cur" />
+    <EmbeddedResource Include="Resources\Cursors\RectangleToolCursor.cur" />
+    <EmbeddedResource Include="Resources\Cursors\GenericToolCursor.cur" />
+    <None Include="Resources\3px.png" />
+    <None Include="Resources\5px.png" />
+    <None Include="Resources\7px.png" />
+    <None Include="Resources\10px.png" />
+    <None Include="Resources\12px.png" />
     <Content Include="todo.txt" />
     <EmbeddedResource Include="Resources\arrow.png" />
     <None Include="Resources\icon.ico" />

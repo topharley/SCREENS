@@ -108,7 +108,7 @@ namespace Screens
                     _selectingArea = false;
                     clipForm.Close();
 
-                    forms.ForEach(f => f.Visible = false); // uncomment for debug
+                    forms.ForEach(f => f.Visible = false); // comment for debug
 
                     Bitmap bitmap;
                     if (screen.Bounds.Contains(clipForm.Bounds))
@@ -129,7 +129,7 @@ namespace Screens
 
         private static Bitmap Collage(List<Form> forms, Point leftCorner, Size fullSize)
         {
-            var bitmap = new Bitmap(fullSize.Width, fullSize.Height, PixelFormat.Format32bppRgb);
+            var bitmap = new Bitmap(fullSize.Width, fullSize.Height, PixelFormat.Format32bppArgb);
             using (Graphics graphics = Graphics.FromImage(bitmap))
             {
                 Point dstPoint = Point.Empty;
@@ -194,14 +194,13 @@ namespace Screens
             using (Graphics graphics = Graphics.FromImage(bitmap))
             {
                 graphics.CopyFromScreen(rect.Left, rect.Top, 0, 0, bitmap.Size);
-                //graphics.CopyFromScreen(Point.Empty, Point.Empty, bitmap.Size);
             }
             return bitmap;
         }
 
         private static Bitmap GetClip(Image image, Rectangle rect)
         {
-            var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppRgb);
+            var bitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             using (Graphics graphics = Graphics.FromImage(bitmap))
             {
                 graphics.DrawImage(image, new Rectangle(Point.Empty, rect.Size), rect, GraphicsUnit.Pixel);

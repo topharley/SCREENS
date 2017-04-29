@@ -39,14 +39,14 @@
             this.ShortenUrlCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.WaterMarkEdit = new System.Windows.Forms.TextBox();
             this.UseHKCheckBox = new System.Windows.Forms.CheckBox();
             this.AutoStartCheckBox = new System.Windows.Forms.CheckBox();
             this.SaveLocalPathLinkLabel = new System.Windows.Forms.LinkLabel();
             this.SaveLogLinkLabel = new System.Windows.Forms.LinkLabel();
             this.CopyInClipboardCheckBox = new System.Windows.Forms.CheckBox();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.WaterMarkEdit = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -162,6 +162,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Настройки";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 193);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 17;
+            this.label1.Text = "Водный знак";
+            // 
+            // WaterMarkEdit
+            // 
+            this.WaterMarkEdit.Location = new System.Drawing.Point(96, 190);
+            this.WaterMarkEdit.Name = "WaterMarkEdit";
+            this.WaterMarkEdit.Size = new System.Drawing.Size(264, 20);
+            this.WaterMarkEdit.TabIndex = 16;
+            this.WaterMarkEdit.Text = "http://scrns.ru";
+            // 
             // UseHKCheckBox
             // 
             this.UseHKCheckBox.AutoSize = true;
@@ -177,9 +194,9 @@
             this.AutoStartCheckBox.AutoSize = true;
             this.AutoStartCheckBox.Location = new System.Drawing.Point(20, 29);
             this.AutoStartCheckBox.Name = "AutoStartCheckBox";
-            this.AutoStartCheckBox.Size = new System.Drawing.Size(186, 17);
+            this.AutoStartCheckBox.Size = new System.Drawing.Size(180, 17);
             this.AutoStartCheckBox.TabIndex = 14;
-            this.AutoStartCheckBox.Text = "Запускать всместе с системой";
+            this.AutoStartCheckBox.Text = "Запускать вместе с системой";
             this.AutoStartCheckBox.UseVisualStyleBackColor = true;
             // 
             // SaveLocalPathLinkLabel
@@ -213,22 +230,6 @@
             this.CopyInClipboardCheckBox.TabIndex = 9;
             this.CopyInClipboardCheckBox.Text = "Копировать адрес картинки";
             this.CopyInClipboardCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // WaterMarkEdit
-            // 
-            this.WaterMarkEdit.Location = new System.Drawing.Point(83, 190);
-            this.WaterMarkEdit.Name = "WaterMarkEdit";
-            this.WaterMarkEdit.Size = new System.Drawing.Size(277, 20);
-            this.WaterMarkEdit.TabIndex = 16;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 193);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 13);
-            this.label1.TabIndex = 17;
-            this.label1.Text = "WaterMark";
             // 
             // SettingsDialog
             // 
