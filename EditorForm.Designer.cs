@@ -45,6 +45,12 @@ namespace Screens
             this.LineToolStripButton = new Screens.InstrumentToolStripButton();
             this.BlurToolStripButton = new Screens.InstrumentToolStripButton();
             this.HightlightToolStripButton = new Screens.InstrumentToolStripButton();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this._3pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
+            this._5pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
+            this._7pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
+            this._10pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
+            this._12pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
             this.TextToolStripButton = new Screens.InstrumentToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.RedToolStripButton = new Screens.ColorToolStripButton();
@@ -53,12 +59,6 @@ namespace Screens
             this.GreenToolStripButton = new Screens.ColorToolStripButton();
             this.BlueToolStripButton = new Screens.ColorToolStripButton();
             this.BlackToolStripButton = new Screens.ColorToolStripButton();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this._3pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
-            this._5pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
-            this._7pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
-            this._10pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
-            this._12pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
             this.CenterPanel = new Screens.SelectablePictureBox();
             this.Box = new System.Windows.Forms.PictureBox();
             this.BottomPanel.SuspendLayout();
@@ -239,6 +239,66 @@ namespace Screens
             this.HightlightToolStripButton.Text = "Маркер";
             this.HightlightToolStripButton.Click += new System.EventHandler(this.InstrumentToolStripButton_Click);
             // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._3pxToolStripMenuItem,
+            this._5pxToolStripMenuItem,
+            this._7pxToolStripMenuItem,
+            this._10pxToolStripMenuItem,
+            this._12pxToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = global::Screens.Properties.Resources._3px;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
+            // 
+            // _3pxToolStripMenuItem
+            // 
+            this._3pxToolStripMenuItem.Image = global::Screens.Properties.Resources._3px;
+            this._3pxToolStripMenuItem.LineWidth = ((uint)(3u));
+            this._3pxToolStripMenuItem.Name = "_3pxToolStripMenuItem";
+            this._3pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._3pxToolStripMenuItem.Text = "3px";
+            this._3pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
+            // 
+            // _5pxToolStripMenuItem
+            // 
+            this._5pxToolStripMenuItem.Image = global::Screens.Properties.Resources._5px;
+            this._5pxToolStripMenuItem.LineWidth = ((uint)(5u));
+            this._5pxToolStripMenuItem.Name = "_5pxToolStripMenuItem";
+            this._5pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._5pxToolStripMenuItem.Text = "5px";
+            this._5pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
+            // 
+            // _7pxToolStripMenuItem
+            // 
+            this._7pxToolStripMenuItem.Image = global::Screens.Properties.Resources._7px;
+            this._7pxToolStripMenuItem.LineWidth = ((uint)(7u));
+            this._7pxToolStripMenuItem.Name = "_7pxToolStripMenuItem";
+            this._7pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._7pxToolStripMenuItem.Text = "7px";
+            this._7pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
+            // 
+            // _10pxToolStripMenuItem
+            // 
+            this._10pxToolStripMenuItem.Image = global::Screens.Properties.Resources._10px;
+            this._10pxToolStripMenuItem.LineWidth = ((uint)(10u));
+            this._10pxToolStripMenuItem.Name = "_10pxToolStripMenuItem";
+            this._10pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._10pxToolStripMenuItem.Text = "10px";
+            this._10pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
+            // 
+            // _12pxToolStripMenuItem
+            // 
+            this._12pxToolStripMenuItem.Image = global::Screens.Properties.Resources._12px;
+            this._12pxToolStripMenuItem.LineWidth = ((uint)(12u));
+            this._12pxToolStripMenuItem.Name = "_12pxToolStripMenuItem";
+            this._12pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._12pxToolStripMenuItem.Text = "12px";
+            this._12pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
+            // 
             // TextToolStripButton
             // 
             this.TextToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -320,66 +380,6 @@ namespace Screens
             this.BlackToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.BlackToolStripButton.Tag = "";
             this.BlackToolStripButton.Click += new System.EventHandler(this.ColoredButtonToolStripButton_Click);
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._3pxToolStripMenuItem,
-            this._5pxToolStripMenuItem,
-            this._7pxToolStripMenuItem,
-            this._10pxToolStripMenuItem,
-            this._12pxToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = global::Screens.Properties.Resources._5px;
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButton1.Text = "toolStripDropDownButton1";
-            // 
-            // _3pxToolStripMenuItem
-            // 
-            this._3pxToolStripMenuItem.Image = global::Screens.Properties.Resources._3px;
-            this._3pxToolStripMenuItem.LineWidth = ((uint)(3u));
-            this._3pxToolStripMenuItem.Name = "_3pxToolStripMenuItem";
-            this._3pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._3pxToolStripMenuItem.Text = "3px";
-            this._3pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
-            // 
-            // _5pxToolStripMenuItem
-            // 
-            this._5pxToolStripMenuItem.Image = global::Screens.Properties.Resources._5px;
-            this._5pxToolStripMenuItem.LineWidth = ((uint)(5u));
-            this._5pxToolStripMenuItem.Name = "_5pxToolStripMenuItem";
-            this._5pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._5pxToolStripMenuItem.Text = "5px";
-            this._5pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
-            // 
-            // _7pxToolStripMenuItem
-            // 
-            this._7pxToolStripMenuItem.Image = global::Screens.Properties.Resources._7px;
-            this._7pxToolStripMenuItem.LineWidth = ((uint)(7u));
-            this._7pxToolStripMenuItem.Name = "_7pxToolStripMenuItem";
-            this._7pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._7pxToolStripMenuItem.Text = "7px";
-            this._7pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
-            // 
-            // _10pxToolStripMenuItem
-            // 
-            this._10pxToolStripMenuItem.Image = global::Screens.Properties.Resources._10px;
-            this._10pxToolStripMenuItem.LineWidth = ((uint)(10u));
-            this._10pxToolStripMenuItem.Name = "_10pxToolStripMenuItem";
-            this._10pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._10pxToolStripMenuItem.Text = "10px";
-            this._10pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
-            // 
-            // _12pxToolStripMenuItem
-            // 
-            this._12pxToolStripMenuItem.Image = global::Screens.Properties.Resources._12px;
-            this._12pxToolStripMenuItem.LineWidth = ((uint)(12u));
-            this._12pxToolStripMenuItem.Name = "_12pxToolStripMenuItem";
-            this._12pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this._12pxToolStripMenuItem.Text = "12px";
-            this._12pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
             // 
             // CenterPanel
             // 

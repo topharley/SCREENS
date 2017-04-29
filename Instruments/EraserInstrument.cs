@@ -43,7 +43,7 @@ namespace Screens.Instruments
             {
                 Bitmap bmp = (image as Bitmap) ?? new Bitmap(image);
                 Rectangle rect = PointsToRectangle(_prevPoint, _newPoint);
-                rect.Inflate((int)Math.Ceiling(5f), (int)Math.Ceiling(5f));
+                rect.Inflate((int)Math.Ceiling(_lineWidth / 2f), (int)Math.Ceiling(_lineWidth / 2f));
 
                 bmp = InvertColor(bmp, rect);
                 DrawLine(bmp, _eraserColor);
