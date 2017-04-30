@@ -10,6 +10,7 @@ namespace Screens
         public Bitmap Bitmap { get { return (Bitmap)Box.Image; } }
 
         private Instrument _instrument;
+        private uint _lineWidth = 3;
         private Color _color = Color.Transparent;
         private Stack<Image> _undoStack;
 
@@ -55,7 +56,7 @@ namespace Screens
         {
             _undoStack.Push(_instrument.SourceImage);
             UndoToolStripButton.Enabled = _undoStack.Count > 0;
-            _instrument.MouseDown(e.Location);
+            _instrument.MouseDown(e);
         }
 
         private void Box_MouseUp(object sender, MouseEventArgs e)
@@ -103,6 +104,7 @@ namespace Screens
             {
                 _instrument = InstrumentFactory.Create(clickedBtn.InstrumentType);
                 _instrument.Init(Box, _color);
+                _instrument.SetWidth(_lineWidth);
                 foreach (var btn in MainToolStrip.Items)
                 {
                     var button = btn as InstrumentToolStripButton;
@@ -119,9 +121,21 @@ namespace Screens
             InstrumentToolStripButton_Click(sender, e);
         }
 
+        private void WidthToolMenuItem_Click(object sender, System.EventArgs e)
+        {
+            var itm = sender as Controls.LineWidthToolStripMenuItem;
+            if (itm == null) return;
+            _lineWidth = itm.LineWidth;
+            _instrument.SetWidth(itm.LineWidth);
+
+            itm.OwnerItem.Image = itm.Image;
+        }
+
         private void ClipboardBbutton_Click(object sender, System.EventArgs e)
         {
-            var bitmap = TextInstrument.DrawWaterMark(Box.Image);
+            var bitmap = Box.Image;
+            if (Settings.Current.DrawWaterMark)
+                bitmap = TextInstrument.DrawWaterMark(bitmap);
             Clipboard.SetImage(bitmap);
             Close();
         }
@@ -131,7 +145,10 @@ namespace Screens
             SaveFileDialog dlg = new SaveFileDialog { Filter = "PNG|*.png" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                var pngBuffer = Clipper.GetPng(Bitmap);
+                var bitmap = Box.Image;
+                if (Settings.Current.DrawWaterMark)
+                    bitmap = TextInstrument.DrawWaterMark(bitmap);
+                var pngBuffer = Clipper.GetPng((Bitmap)bitmap);
                 System.IO.File.WriteAllBytes(dlg.FileName, pngBuffer);
                 Clipboard.SetText(dlg.FileName);
                 Close();

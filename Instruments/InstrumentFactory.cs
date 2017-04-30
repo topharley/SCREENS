@@ -22,6 +22,8 @@ namespace Screens.Instruments
                     return new HightlightInstrument();
                 case InstrumentType.Text:
                     return new TextInstrument();
+                case InstrumentType.Eraser:
+                    return new EraserInstrument();
                 default:
                     throw new NotImplementedException();
             }

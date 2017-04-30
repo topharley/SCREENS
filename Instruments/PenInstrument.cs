@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
 namespace Screens.Instruments
 {
@@ -8,15 +9,33 @@ namespace Screens.Instruments
         public PenInstrument()
         {
             Type = InstrumentType.Pen;
+            _cursor = Resources.Cursors.PencilToolCursor;
         }
 
         public override Image Draw(Image image)
         {
+            DrawLine(image, _color);
+            return image;
+        }
+
+        protected void DrawLine(Image image, Color color)
+        {
+            Point a = _prevPoint;
+            Point b = _newPoint;
             using (Graphics graphics = Graphics.FromImage(image))
             {
-                graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                graphics.DrawLine(new Pen(_color, 3), _prevPoint, _newPoint);
-                return image;
+                using (Pen pen = new Pen(color, _lineWidth))
+                {
+                    graphics.SmoothingMode = SmoothingMode.None;
+
+                    graphics.CompositingMode = CompositingMode.SourceOver;
+                    graphics.PixelOffsetMode = pen.Width > 1 ? PixelOffsetMode.Half : PixelOffsetMode.None;
+
+                    pen.EndCap = LineCap.Round;
+                    pen.StartCap = LineCap.Round;
+                    graphics.DrawLine(pen, a, b);
+                    graphics.FillEllipse(pen.Brush, a.X - pen.Width / 2.0f, a.Y - pen.Width / 2.0f, pen.Width, pen.Width);
+                }
             }
         }
 

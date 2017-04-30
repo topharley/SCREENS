@@ -9,6 +9,7 @@ namespace Screens.Instruments
         public RectInstrument()
         {
             Type = InstrumentType.Rect;
+            _cursor = Resources.Cursors.RectangleToolCursor;
         }
 
         public override Image Draw(Image image)
