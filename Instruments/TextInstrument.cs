@@ -44,6 +44,12 @@ namespace Screens.Instruments
             }
         }
 
+        public override void MouseUp(Image image)
+        {
+            _text = "";
+            base.MouseUp(image);
+        }
+
         public static Image DrawWaterMark(Image image)
         {
             var text = Settings.Current.WaterMark;

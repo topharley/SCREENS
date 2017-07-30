@@ -9,7 +9,6 @@ namespace Screens.Instruments
         public RectInstrument()
         {
             Type = InstrumentType.Rect;
-            _cursor = Resources.Cursors.RectangleToolCursor;
         }
 
         public override Image Draw(Image image)
@@ -22,9 +21,14 @@ namespace Screens.Instruments
                     Math.Min(_prevPoint.Y, _newPoint.Y), 
                     Math.Abs(_newPoint.X - _prevPoint.X), 
                     Math.Abs(_newPoint.Y - _prevPoint.Y));
-                graphics.DrawRectangle(new Pen(_color, _lineWidth), rect);
+                DrawRect(graphics, rect);
             }
             return image;
+        }
+
+        protected virtual void DrawRect(Graphics graphics, Rectangle rect)
+        {
+            graphics.DrawRectangle(new Pen(_color, _lineWidth), rect);
         }
     }
 }

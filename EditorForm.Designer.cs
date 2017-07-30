@@ -39,28 +39,29 @@ namespace Screens
             this.MainToolStrip = new System.Windows.Forms.ToolStrip();
             this.UndoToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.LineWidthToolStripButton = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.CenterPanel = new Screens.SelectablePictureBox();
-            this.Box = new System.Windows.Forms.PictureBox();
             this.ArrowToolStripButton = new Screens.InstrumentToolStripButton();
             this.PenToolStripButton = new Screens.InstrumentToolStripButton();
             this.RectToolStripButton = new Screens.InstrumentToolStripButton();
             this.LineToolStripButton = new Screens.InstrumentToolStripButton();
             this.EraserToolStripButton = new Screens.InstrumentToolStripButton();
             this.HightlightToolStripButton = new Screens.InstrumentToolStripButton();
+            this.BlurToolStripButton = new Screens.InstrumentToolStripButton();
+            this.LineWidthToolStripButton = new System.Windows.Forms.ToolStripDropDownButton();
             this._3pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
             this._5pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
             this._7pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
             this._10pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
             this._12pxToolStripMenuItem = new Screens.Controls.LineWidthToolStripMenuItem();
             this.TextToolStripButton = new Screens.InstrumentToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.RedToolStripButton = new Screens.ColorToolStripButton();
             this.WhiteToolStripButton = new Screens.ColorToolStripButton();
             this.OrangeToolStripButton = new Screens.ColorToolStripButton();
             this.GreenToolStripButton = new Screens.ColorToolStripButton();
             this.BlueToolStripButton = new Screens.ColorToolStripButton();
             this.BlackToolStripButton = new Screens.ColorToolStripButton();
+            this.CenterPanel = new Screens.SelectablePictureBox();
+            this.Box = new System.Windows.Forms.PictureBox();
             this.BottomPanel.SuspendLayout();
             this.MainToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CenterPanel)).BeginInit();
@@ -142,6 +143,7 @@ namespace Screens
             this.LineToolStripButton,
             this.EraserToolStripButton,
             this.HightlightToolStripButton,
+            this.BlurToolStripButton,
             this.LineWidthToolStripButton,
             this.TextToolStripButton,
             this.toolStripSeparator1,
@@ -172,51 +174,6 @@ namespace Screens
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // LineWidthToolStripButton
-            // 
-            this.LineWidthToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LineWidthToolStripButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this._3pxToolStripMenuItem,
-            this._5pxToolStripMenuItem,
-            this._7pxToolStripMenuItem,
-            this._10pxToolStripMenuItem,
-            this._12pxToolStripMenuItem});
-            this.LineWidthToolStripButton.Image = global::Screens.Properties.Resources._3px;
-            this.LineWidthToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LineWidthToolStripButton.Name = "LineWidthToolStripButton";
-            this.LineWidthToolStripButton.Size = new System.Drawing.Size(29, 22);
-            this.LineWidthToolStripButton.Text = "toolStripDropDownButton1";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // CenterPanel
-            // 
-            this.CenterPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CenterPanel.BackgroundImage")));
-            this.CenterPanel.Controls.Add(this.Box);
-            this.CenterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CenterPanel.Location = new System.Drawing.Point(0, 25);
-            this.CenterPanel.Name = "CenterPanel";
-            this.CenterPanel.Size = new System.Drawing.Size(564, 237);
-            this.CenterPanel.TabIndex = 0;
-            this.CenterPanel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EditorForm_KeyDown);
-            // 
-            // Box
-            // 
-            this.Box.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Box.BackColor = System.Drawing.Color.White;
-            this.Box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Box.Location = new System.Drawing.Point(104, 88);
-            this.Box.Name = "Box";
-            this.Box.Size = new System.Drawing.Size(333, 98);
-            this.Box.TabIndex = 5;
-            this.Box.TabStop = false;
-            this.Box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Box_MouseDown);
-            this.Box.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Box_MouseMove);
-            this.Box.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Box_MouseUp);
             // 
             // ArrowToolStripButton
             // 
@@ -284,12 +241,38 @@ namespace Screens
             this.HightlightToolStripButton.Text = "Маркер";
             this.HightlightToolStripButton.Click += new System.EventHandler(this.InstrumentToolStripButton_Click);
             // 
+            // BlurToolStripButton
+            // 
+            this.BlurToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BlurToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("BlurToolStripButton.Image")));
+            this.BlurToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BlurToolStripButton.InstrumentType = Screens.Instruments.InstrumentType.Blur;
+            this.BlurToolStripButton.Name = "BlurToolStripButton";
+            this.BlurToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.BlurToolStripButton.Text = "Размытие";
+            this.BlurToolStripButton.Click += new System.EventHandler(this.InstrumentToolStripButton_Click);
+            // 
+            // LineWidthToolStripButton
+            // 
+            this.LineWidthToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LineWidthToolStripButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this._3pxToolStripMenuItem,
+            this._5pxToolStripMenuItem,
+            this._7pxToolStripMenuItem,
+            this._10pxToolStripMenuItem,
+            this._12pxToolStripMenuItem});
+            this.LineWidthToolStripButton.Image = global::Screens.Properties.Resources._3px;
+            this.LineWidthToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LineWidthToolStripButton.Name = "LineWidthToolStripButton";
+            this.LineWidthToolStripButton.Size = new System.Drawing.Size(29, 22);
+            this.LineWidthToolStripButton.Text = "toolStripDropDownButton1";
+            // 
             // _3pxToolStripMenuItem
             // 
             this._3pxToolStripMenuItem.Image = global::Screens.Properties.Resources._3px;
             this._3pxToolStripMenuItem.LineWidth = ((uint)(3u));
             this._3pxToolStripMenuItem.Name = "_3pxToolStripMenuItem";
-            this._3pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._3pxToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this._3pxToolStripMenuItem.Text = "3px";
             this._3pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
             // 
@@ -298,7 +281,7 @@ namespace Screens
             this._5pxToolStripMenuItem.Image = global::Screens.Properties.Resources._5px;
             this._5pxToolStripMenuItem.LineWidth = ((uint)(5u));
             this._5pxToolStripMenuItem.Name = "_5pxToolStripMenuItem";
-            this._5pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._5pxToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this._5pxToolStripMenuItem.Text = "5px";
             this._5pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
             // 
@@ -307,7 +290,7 @@ namespace Screens
             this._7pxToolStripMenuItem.Image = global::Screens.Properties.Resources._7px;
             this._7pxToolStripMenuItem.LineWidth = ((uint)(7u));
             this._7pxToolStripMenuItem.Name = "_7pxToolStripMenuItem";
-            this._7pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._7pxToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this._7pxToolStripMenuItem.Text = "7px";
             this._7pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
             // 
@@ -316,7 +299,7 @@ namespace Screens
             this._10pxToolStripMenuItem.Image = global::Screens.Properties.Resources._10px;
             this._10pxToolStripMenuItem.LineWidth = ((uint)(10u));
             this._10pxToolStripMenuItem.Name = "_10pxToolStripMenuItem";
-            this._10pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._10pxToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this._10pxToolStripMenuItem.Text = "10px";
             this._10pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
             // 
@@ -325,7 +308,7 @@ namespace Screens
             this._12pxToolStripMenuItem.Image = global::Screens.Properties.Resources._12px;
             this._12pxToolStripMenuItem.LineWidth = ((uint)(12u));
             this._12pxToolStripMenuItem.Name = "_12pxToolStripMenuItem";
-            this._12pxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this._12pxToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this._12pxToolStripMenuItem.Text = "12px";
             this._12pxToolStripMenuItem.Click += new System.EventHandler(this.WidthToolMenuItem_Click);
             // 
@@ -339,6 +322,11 @@ namespace Screens
             this.TextToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.TextToolStripButton.Text = "Текст";
             this.TextToolStripButton.Click += new System.EventHandler(this.TextToolStripButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // RedToolStripButton
             // 
@@ -406,6 +394,31 @@ namespace Screens
             this.BlackToolStripButton.Tag = "";
             this.BlackToolStripButton.Click += new System.EventHandler(this.ColoredButtonToolStripButton_Click);
             // 
+            // CenterPanel
+            // 
+            this.CenterPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("CenterPanel.BackgroundImage")));
+            this.CenterPanel.Controls.Add(this.Box);
+            this.CenterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CenterPanel.Location = new System.Drawing.Point(0, 25);
+            this.CenterPanel.Name = "CenterPanel";
+            this.CenterPanel.Size = new System.Drawing.Size(564, 237);
+            this.CenterPanel.TabIndex = 0;
+            this.CenterPanel.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EditorForm_KeyDown);
+            // 
+            // Box
+            // 
+            this.Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Box.BackColor = System.Drawing.Color.White;
+            this.Box.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Box.Location = new System.Drawing.Point(104, 88);
+            this.Box.Name = "Box";
+            this.Box.Size = new System.Drawing.Size(333, 98);
+            this.Box.TabIndex = 5;
+            this.Box.TabStop = false;
+            this.Box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Box_MouseDown);
+            this.Box.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Box_MouseMove);
+            this.Box.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Box_MouseUp);
+            // 
             // EditorForm
             // 
             this.AcceptButton = this.OKButton;
@@ -464,5 +477,6 @@ namespace Screens
         private Controls.LineWidthToolStripMenuItem _7pxToolStripMenuItem;
         private Controls.LineWidthToolStripMenuItem _10pxToolStripMenuItem;
         private Controls.LineWidthToolStripMenuItem _12pxToolStripMenuItem;
+        private Screens.InstrumentToolStripButton BlurToolStripButton;
     }
 }

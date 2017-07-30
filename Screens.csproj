@@ -69,6 +69,8 @@
       <DependentUpon>InputQuery.cs</DependentUpon>
     </Compile>
     <Compile Include="Instruments\EraserInstrument.cs" />
+    <Compile Include="Instruments\CursorFactory.cs" />
+    <Compile Include="Instruments\LockBitmap.cs" />
     <Compile Include="Instruments\TextInstrument.cs" />
     <Compile Include="Instruments\InstrumentFactory.cs" />
     <Compile Include="Instruments\ArrowInstrument.cs" />
@@ -138,13 +140,7 @@
     <EmbeddedResource Include="Resources\Cursors\PencilToolCursor.cur" />
     <EmbeddedResource Include="Resources\Cursors\RectangleToolCursor.cur" />
     <EmbeddedResource Include="Resources\Cursors\GenericToolCursor.cur" />
-    <None Include="Resources\3px.png" />
-    <None Include="Resources\5px.png" />
-    <None Include="Resources\7px.png" />
-    <None Include="Resources\10px.png" />
-    <None Include="Resources\12px.png" />
     <Content Include="todo.txt" />
-    <EmbeddedResource Include="Resources\arrow.png" />
     <None Include="Resources\icon.ico" />
     <Content Include="icon.ico" />
   </ItemGroup>

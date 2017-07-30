@@ -9,7 +9,6 @@ namespace Screens.Instruments
         public PenInstrument()
         {
             Type = InstrumentType.Pen;
-            _cursor = Resources.Cursors.PencilToolCursor;
         }
 
         public override Image Draw(Image image)

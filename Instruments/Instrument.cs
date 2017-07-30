@@ -6,7 +6,6 @@ namespace Screens.Instruments
 {
     public abstract class Instrument
     {
-        protected Cursor _cursor = Resources.Cursors.GenericToolCursor;
         protected bool _mouseDown;
         protected PictureBox _picture;
         protected Image _sourceImage;
@@ -27,7 +26,7 @@ namespace Screens.Instruments
             _picture.BackColor = Color.Transparent;
             _color = color;
             _sourceImage = (Image)picture.Image.Clone();
-            _picture.Cursor = _cursor;
+            _picture.Cursor = CursorFactory.Create(Type);
         }
 
         public abstract Image Draw(Image image);
