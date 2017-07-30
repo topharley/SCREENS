@@ -13,7 +13,7 @@ namespace Screens.Instruments
                 case InstrumentType.Pen:
                     return new PenInstrument();
                 case InstrumentType.Rect:
-                    return new RectInstrument();
+                    return new RectInstrument(); 
                 case InstrumentType.Arrow:
                     return new ArrowInstrument();
                 case InstrumentType.Blur:

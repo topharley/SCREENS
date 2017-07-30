@@ -5,6 +5,6 @@ namespace Screens.Uploaders
         Imgur,
         Cloudinary,
         Pixs,
-        //UploadsIm
+        UploadsIm
     }
 }

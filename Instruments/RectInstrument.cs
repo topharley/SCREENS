@@ -22,9 +22,7 @@ namespace Screens.Instruments
                     Math.Min(_prevPoint.Y, _newPoint.Y), 
                     Math.Abs(_newPoint.X - _prevPoint.X), 
                     Math.Abs(_newPoint.Y - _prevPoint.Y));
-                Color color = Color.FromArgb(20, _color.R, _color.G, _color.B);
-                graphics.FillRectangle(new SolidBrush(color), rect);
-                graphics.DrawRectangle(new Pen(_color, 2), rect);
+                graphics.DrawRectangle(new Pen(_color, _lineWidth), rect);
             }
             return image;
         }

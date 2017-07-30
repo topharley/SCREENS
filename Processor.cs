@@ -12,11 +12,8 @@ namespace Screens
     {
         public static readonly string SCREENS_FAILED = "SCREENS_FAILED";
 
-        private Uploader _uploader;
-
         public Processor()
         {
-            _uploader = UploaderFactory.Create(Settings.Current.UploaderType);
             Settings.Current.Apply();
         }
 
@@ -135,7 +132,7 @@ namespace Screens
         {
             try
             {
-                return _uploader.Upload(bitmap);
+                return UploaderFactory.Create(Settings.Current.UploaderType).Upload(bitmap);
             }
             catch
             {

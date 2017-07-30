@@ -57,15 +57,5 @@ namespace Screens.Instruments
         {
             _lineWidth = lineWidth;
         }
-
-        protected Rectangle PointsToRectangle(Point a, Point b)
-        {
-            int x = Math.Min(a.X, b.X);
-            int y = Math.Min(a.Y, b.Y);
-            int width = Math.Abs(a.X - b.X) + 1;
-            int height = Math.Abs(a.Y - b.Y) + 1;
-
-            return new Rectangle(x, y, width, height);
-        }
     }
 }

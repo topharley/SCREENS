@@ -39,6 +39,8 @@
             this.ShortenUrlCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.UseProxyCheckBox = new System.Windows.Forms.CheckBox();
+            this.ProxyTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.WaterMarkEdit = new System.Windows.Forms.TextBox();
             this.UseHKCheckBox = new System.Windows.Forms.CheckBox();
@@ -47,8 +49,6 @@
             this.SaveLogLinkLabel = new System.Windows.Forms.LinkLabel();
             this.CopyInClipboardCheckBox = new System.Windows.Forms.CheckBox();
             this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ProxyTextBox = new System.Windows.Forms.TextBox();
-            this.UseProxyCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -166,6 +166,26 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Настройки";
             // 
+            // UseProxyCheckBox
+            // 
+            this.UseProxyCheckBox.AutoSize = true;
+            this.UseProxyCheckBox.Location = new System.Drawing.Point(20, 190);
+            this.UseProxyCheckBox.Name = "UseProxyCheckBox";
+            this.UseProxyCheckBox.Size = new System.Drawing.Size(64, 17);
+            this.UseProxyCheckBox.TabIndex = 19;
+            this.UseProxyCheckBox.Text = "Прокси";
+            this.UseProxyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // ProxyTextBox
+            // 
+            this.ProxyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ProxyTextBox.Location = new System.Drawing.Point(96, 189);
+            this.ProxyTextBox.Name = "ProxyTextBox";
+            this.ProxyTextBox.Size = new System.Drawing.Size(264, 20);
+            this.ProxyTextBox.TabIndex = 18;
+            this.ProxyTextBox.Text = "http://user:pass@127.0.0.1:8080";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -236,26 +256,6 @@
             this.CopyInClipboardCheckBox.TabIndex = 9;
             this.CopyInClipboardCheckBox.Text = "Копировать адрес картинки";
             this.CopyInClipboardCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // ProxyTextBox
-            // 
-            this.ProxyTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ProxyTextBox.Location = new System.Drawing.Point(96, 189);
-            this.ProxyTextBox.Name = "ProxyTextBox";
-            this.ProxyTextBox.Size = new System.Drawing.Size(264, 20);
-            this.ProxyTextBox.TabIndex = 18;
-            this.ProxyTextBox.Text = "http://user:pass@127.0.0.1:8080";
-            // 
-            // UseProxyCheckBox
-            // 
-            this.UseProxyCheckBox.AutoSize = true;
-            this.UseProxyCheckBox.Location = new System.Drawing.Point(20, 190);
-            this.UseProxyCheckBox.Name = "UseProxyCheckBox";
-            this.UseProxyCheckBox.Size = new System.Drawing.Size(64, 17);
-            this.UseProxyCheckBox.TabIndex = 19;
-            this.UseProxyCheckBox.Text = "Прокси";
-            this.UseProxyCheckBox.UseVisualStyleBackColor = true;
             // 
             // SettingsDialog
             // 

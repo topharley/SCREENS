@@ -14,8 +14,8 @@ namespace Screens.Uploaders
                     return new ImgurUploader();
                 case UploaderType.Pixs:
                     return new PixsRuUploader();
-                //case UploaderType.UploadsIm:
-                //    return new UploadsImUploader();
+                case UploaderType.UploadsIm:
+                    return new UploadsImUploader();
                 default:
                     throw new NotImplementedException();
             }

@@ -285,12 +285,12 @@
   <data name="ArrowToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEXSURBVFhH7Y1NSwJRFIbnn0WLFm3ctGkViBBChBARSViC
-        0MKNixCJiCIKPyaCoEUYhYbZ5x8KgjccXgNtxpl77rlBMA88XLjn3ud4Kf+CvcsPaMmkGWEhqUyaExaT
-        yJyMXf8dtjIlp9R5g43M2LHTfoVUJuQUWy+wkRkZ281n2MqUOVsXQ2jInBmb50/QksnkbJwNoCmzySic
-        PkJbpuNZP+nDhczPZu24B1dyRTT5owe4lGvCWT28h5ZRvWBRFLnGHTRkLmDW7BfZehfZcvcrOIUyNUHc
-        fIKVg1tIZSKUJG9+WK7dwFR+1WOpeo2k8os+mf0rxMmn7lis+Jir+J+jc1o+cc9CuY1pOfo75ktNjOVV
-        SooCnvcNor6Ir0PdWksAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEXSURBVFhH7Y1NSwJRFIbnn0WLFm3atGkViBBBhBARSaiB
+        0MKNixCJiCIKPyYCoUUYhYbZ5x8KgjccXgNtxpl77rlBMA88XLjn3ud4Kf+C0tUHtGTSjLCQVCbNCYtJ
+        ZE5G0X+HrUzJKbTfYCMzduy1XiGVCTn55gtsZEbGbuMZtjJlzs7lEBoyZ8b2xRO0ZDI5W+cDaMpsMnJn
+        j9CW6Xg2T/twIfOz2TjpwZVcEc368QNcyjXhrB3dQ8uoXrAoimz9DhoyFzBr9otMrYtMqfsVnEKZmiBu
+        PsHq4S2kMhFKkjc/rFRvYCq/6rFc6SCp/KLP0sE14uRTdyyWfcyV/c/ROS2fuGdhv4VpOfo75gsNjOVV
+        SooCnvcNnMSIrnC7N0gAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="PenToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -329,7 +329,7 @@
         IiQAiOZto5qJBaOaSQQUaj5DvmZQjiJbMxSANJKpmYEBAGMxUMuuNuaGAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BlurToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="EraserToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
         YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIlSURBVDhPjZDba5JhGMDfT5FIKOlgZBfhaeHdd2mRQQeS
