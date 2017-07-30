@@ -28,6 +28,11 @@ namespace Screens
             
             SetPathInTag(SaveLocalPathLinkLabel, Settings.Current.SaveLastScreenshotFile);
             SaveLocalScreenshotCheckBox.Checked = Settings.Current.SaveLastScreenshot;
+
+            WaterMarkEdit.Text = Settings.Current.WaterMark;
+
+            UseProxyCheckBox.Checked = Settings.Current.UseProxy;
+            ProxyTextBox.Text = Settings.Current.Proxy;
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -50,6 +55,9 @@ namespace Screens
             Settings.Current.SaveLogFile = SaveLogLinkLabel.Tag as string;
             Settings.Current.SaveLastScreenshot = SaveLocalScreenshotCheckBox.Checked;
             Settings.Current.SaveLastScreenshotFile = SaveLocalPathLinkLabel.Tag as string;
+            Settings.Current.WaterMark = WaterMarkEdit.Text.Trim();
+            Settings.Current.UseProxy = UseProxyCheckBox.Checked;
+            Settings.Current.Proxy = ProxyTextBox.Text;
         }
 
         private void CancelButton1_Click(object sender, EventArgs e)

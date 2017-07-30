@@ -22,6 +22,9 @@ namespace Screens
         public String SaveLogFile { get; set; }
         public Boolean SaveLastScreenshot { get; set; }
         public String SaveLastScreenshotFile { get; set; }
+        public String WaterMark { get; set; }
+        public String Proxy { get; set; }
+        public Boolean UseProxy { get; set; }
 
         private static readonly string _settingsFile = Path.Combine(Application.StartupPath, "settings.xml");
         private static readonly XmlSerializer _serializer = new XmlSerializer(typeof(Settings));

@@ -15,7 +15,7 @@ namespace Screens.Instruments
             using (Graphics graphics = Graphics.FromImage(image))
             {
                 graphics.SmoothingMode = SmoothingMode.AntiAlias;
-                graphics.DrawLine(new Pen(_color, 3), _prevPoint, _newPoint);
+                graphics.DrawLine(new Pen(_color, _lineWidth), _prevPoint, _newPoint);
                 return image;
             }
         }

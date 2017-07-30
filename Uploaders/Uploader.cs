@@ -19,7 +19,17 @@ namespace Screens.Uploaders
             wr.ContentType = "multipart/form-data; boundary=" + boundary;
             wr.Method = "POST";
             wr.KeepAlive = true;
-            wr.Credentials = System.Net.CredentialCache.DefaultCredentials;
+            wr.Credentials = CredentialCache.DefaultCredentials;
+            if (Settings.Current.UseProxy)
+            {
+                var address = new Uri(Settings.Current.Proxy);
+                wr.Proxy = new WebProxy(address);
+                if (!String.IsNullOrEmpty(address.UserInfo))
+                {
+                    var parts = address.UserInfo.Split(':');
+                    wr.Proxy.Credentials = new NetworkCredential(parts[0], parts[1]);
+                }
+            }
 
             Stream rs = wr.GetRequestStream();
 

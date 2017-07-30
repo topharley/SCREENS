@@ -9,6 +9,7 @@
         Arrow, 
         Blur,
         Hightlight,
-        Text
+        Text,
+        Eraser
     }
 }
