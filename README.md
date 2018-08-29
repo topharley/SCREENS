@@ -5,4 +5,4 @@ It can take a screenshot, let you change/edit it and sumbit edited screenshot to
 
 Also ready screenshot can be simply copied to your Clipboard.
 
-Latest Release version can be downloaded <a href="http://topperharley.ru/Screens.exe">here</a>
+Latest Release version can be downloaded <a href="https://github.com/topharley/SCREENS/blob/master/Screens.exe">here</a>
