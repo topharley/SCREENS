@@ -14,6 +14,7 @@ namespace Screens
         [STAThread]
         static void Main()
         {
+            ClipperUtils.SetDpiAwareness();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             SetStartMode();
